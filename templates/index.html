@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+flask test
+<input type="file" name="fileToUpload" id="fileToUpload">
+<input type="button" value="Upload Image" name="submit" id="btn">
+<script>
+  const encodeBase64 = () => new Promise((resolve, reject) => {
+    const selectedFile = document.getElementById('fileToUpload').files[0];
+    if (!selectedFile) {
+      alert('no files')
+      reject('no files')
+    }
+    ;
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+
+  const btn = document.getElementById('btn');
+  btn.addEventListener('click', event => {
+    encodeBase64().then(inputBase64 => {
+      const data = { base64: inputBase64 }
+      fetch('/fastAging', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(rtn => console.log(rtn))
+        .catch(error => console.log(error))
+    });
+  });
+</script>
+</body>
+</html>

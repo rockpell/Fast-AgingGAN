@@ -26,7 +26,7 @@ flask test
   btn.addEventListener('click', event => {
     encodeBase64().then(inputBase64 => {
       const data = { base64: inputBase64 }
-      fetch('/fastAging', {
+      fetch('/fast-aging', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'

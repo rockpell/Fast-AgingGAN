@@ -45,4 +45,5 @@ tqdm==4.48.2
 urllib3==1.25.10
 virtualenv==20.0.30
 virtualenv-clone==0.5.4
+waitress==1.4.4
 Werkzeug==1.0.1

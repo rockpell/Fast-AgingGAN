@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "app.py", line 34, in <module>
+    serve(app, host='0.0.0.0', port=80)
+  File "/Users/skid901/boostcamp/Fast-AgingGAN/.venv/lib/python3.7/site-packages/waitress/__init__.py", line 12, in serve
+    server = _server(app, **kw)
+  File "/Users/skid901/boostcamp/Fast-AgingGAN/.venv/lib/python3.7/site-packages/waitress/server.py", line 88, in create_server
+    sockinfo=sockinfo,
+  File "/Users/skid901/boostcamp/Fast-AgingGAN/.venv/lib/python3.7/site-packages/waitress/server.py", line 239, in __init__
+    self.bind_server_socket()
+  File "/Users/skid901/boostcamp/Fast-AgingGAN/.venv/lib/python3.7/site-packages/waitress/server.py", line 368, in bind_server_socket
+    self.bind(sockaddr)
+  File "/Users/skid901/boostcamp/Fast-AgingGAN/.venv/lib/python3.7/site-packages/waitress/wasyncore.py", line 398, in bind
+    return self.socket.bind(addr)
+OSError: [Errno 48] Address already in use

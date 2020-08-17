@@ -33,17 +33,17 @@ def agingTranslate(data):
 
     # base64 string을 이미지로 변환
     data = re.search(r'base64,(.*)', data).group(1)
-    img = Image.open(io.BytesIO(base64.b64decode(data)))
+    img = Image.open(io.BytesIO(base64.b64decode(data))).convert('RGB')
 
     img = trans(img).unsqueeze(0)
     aged_face = model(img)
     aged_face = (aged_face.squeeze().permute(1, 2, 0).numpy() + 1.0) / 2.0
     outimg = Image.fromarray((aged_face * 255).astype(np.uint8))
-    
+
     # 이미지를 base64로 변환
     im_file = io.BytesIO()
     outimg.save(im_file, format="PNG")
     im_bytes = im_file.getvalue()
     im_b64 = base64.b64encode(im_bytes)
-    
+
     return im_b64

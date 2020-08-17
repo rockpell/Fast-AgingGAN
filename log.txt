@@ -1,14 +1,27 @@
+ERROR:app:Exception on /fast-aging [POST]
 Traceback (most recent call last):
-  File "app.py", line 34, in <module>
-    serve(app, host='0.0.0.0', port=80)
-  File "/Users/skid901/boostcamp/Fast-AgingGAN/.venv/lib/python3.7/site-packages/waitress/__init__.py", line 12, in serve
-    server = _server(app, **kw)
-  File "/Users/skid901/boostcamp/Fast-AgingGAN/.venv/lib/python3.7/site-packages/waitress/server.py", line 88, in create_server
-    sockinfo=sockinfo,
-  File "/Users/skid901/boostcamp/Fast-AgingGAN/.venv/lib/python3.7/site-packages/waitress/server.py", line 239, in __init__
-    self.bind_server_socket()
-  File "/Users/skid901/boostcamp/Fast-AgingGAN/.venv/lib/python3.7/site-packages/waitress/server.py", line 368, in bind_server_socket
-    self.bind(sockaddr)
-  File "/Users/skid901/boostcamp/Fast-AgingGAN/.venv/lib/python3.7/site-packages/waitress/wasyncore.py", line 398, in bind
-    return self.socket.bind(addr)
-OSError: [Errno 48] Address already in use
+  File "/Users/skid901/boostcamp/relay-8-week3/.venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/skid901/boostcamp/relay-8-week3/.venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/skid901/boostcamp/relay-8-week3/.venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/skid901/boostcamp/relay-8-week3/.venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/skid901/boostcamp/relay-8-week3/.venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/skid901/boostcamp/relay-8-week3/.venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 23, in fast_aging
+    return bytes(b'data:image/png;base64,') + agingTranslate(input_base64)
+  File "/Users/skid901/boostcamp/relay-8-week3/.venv/lib/python3.7/site-packages/torch/autograd/grad_mode.py", line 15, in decorate_context
+    return func(*args, **kwargs)
+  File "/Users/skid901/boostcamp/relay-8-week3/infer.py", line 38, in agingTranslate
+    img = trans(img).unsqueeze(0)
+  File "/Users/skid901/boostcamp/relay-8-week3/.venv/lib/python3.7/site-packages/torchvision/transforms/transforms.py", line 61, in __call__
+    img = t(img)
+  File "/Users/skid901/boostcamp/relay-8-week3/.venv/lib/python3.7/site-packages/torchvision/transforms/transforms.py", line 212, in __call__
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/Users/skid901/boostcamp/relay-8-week3/.venv/lib/python3.7/site-packages/torchvision/transforms/functional.py", line 298, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
